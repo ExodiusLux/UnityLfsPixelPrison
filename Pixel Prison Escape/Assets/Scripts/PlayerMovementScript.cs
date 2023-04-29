@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovementScript : MonoBehaviour
 {
+    [SerializeField] private float jumpForce;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class PlayerMovementScript : MonoBehaviour
         rb.velocity = new Vector2(dirX * 7f, rb.velocity.y);
 
         if(Input.GetButton("Jump")){
-            GetComponent<Rigidbody2D>().velocity = new Vector2(rb.velocity.x, 14f);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
 }
