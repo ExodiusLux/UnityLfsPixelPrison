@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPatrol : MonoBehaviour
+public class EnemyPatrol : Enemy
 {
-    [SerializeField] float moveSpeed = 1f;
+    
 
     Rigidbody2D myRigidbody;
     public triggerArea attackZone;
@@ -53,9 +53,7 @@ public class EnemyPatrol : MonoBehaviour
         }
 
         anim.SetInteger("state", (int)state);
-        if(state == MovementState.punching){
 
-        }
     }
 
 
@@ -67,6 +65,13 @@ public class EnemyPatrol : MonoBehaviour
             transform.localScale = new Vector2(-(Mathf.Sign(myRigidbody.velocity.x)), transform.localScale.y);
         }
     }
+    /*
+    private void OnTriggerEnter2D(Collider2D collider) {
+        //prevents player exiting the detection collider from flipping enemy
+        if(collider.gameObject.tag == "Wall"){   
+            transform.localScale = new Vector2(-(Mathf.Sign(myRigidbody.velocity.x)), transform.localScale.y);
+        }
+    }*/
     private bool isFacingRight(){
         return transform.localScale.x > Mathf.Epsilon;
     }
