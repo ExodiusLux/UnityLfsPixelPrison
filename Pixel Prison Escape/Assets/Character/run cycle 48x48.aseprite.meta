@@ -33,7 +33,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 48
+    spritePixelsToUnits: 12
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -93,7 +93,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638183753692620528
+  platformSettingsDirtyTick: 638184757140458285
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,8 +119,8 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: run cycle 48x48_Frame_0
     originalName: 
-    pivot: {x: 0.5833334, y: -0.2758621}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -139,8 +139,8 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 82}
   - name: run cycle 48x48_Frame_1
     originalName: 
-    pivot: {x: 0.51851857, y: -0.44444445}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -159,8 +159,8 @@ ScriptedImporter:
     uvTransform: {x: 37, y: 40}
   - name: run cycle 48x48_Frame_2
     originalName: 
-    pivot: {x: 0.59999996, y: -0.2580645}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -179,8 +179,8 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: run cycle 48x48_Frame_3
     originalName: 
-    pivot: {x: 0.49999997, y: -0.2857143}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -199,8 +199,8 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 4}
   - name: run cycle 48x48_Frame_4
     originalName: 
-    pivot: {x: 0.5416666, y: -0.2758621}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -219,8 +219,8 @@ ScriptedImporter:
     uvTransform: {x: 37, y: 75}
   - name: run cycle 48x48_Frame_5
     originalName: 
-    pivot: {x: 0.5555556, y: -0.39285716}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -239,8 +239,8 @@ ScriptedImporter:
     uvTransform: {x: 37, y: 4}
   - name: run cycle 48x48_Frame_6
     originalName: 
-    pivot: {x: 0.625, y: -0.2580645}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -259,8 +259,8 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 43}
   - name: run cycle 48x48_Frame_7
     originalName: 
-    pivot: {x: 0.42857143, y: -0.2857143}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
