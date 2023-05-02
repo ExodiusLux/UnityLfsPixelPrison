@@ -17,9 +17,13 @@ public class triggerArea : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.gameObject.tag == "Player"){
            detectedColliders.Add(collision); 
+        }
     }
     private void OnTriggerExit2D(Collider2D collision){
-        detectedColliders.Remove(collision);
+        if(collision.gameObject.tag == "Player"){
+            detectedColliders.Remove(collision);
+        }
     }
 }

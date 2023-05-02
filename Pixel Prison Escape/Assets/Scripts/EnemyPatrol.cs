@@ -61,7 +61,7 @@ public class EnemyPatrol : Enemy
     //when ground colldider exits the enemy's detection collider, enemy is turned around
     private void OnTriggerExit2D(Collider2D collider) {
         //prevents player exiting the detection collider from flipping enemy
-        if(collider.gameObject.tag != "Player"){   
+        if(collider.gameObject.tag != "Player" && collider.gameObject.tag != "Wall"){   
             transform.localScale = new Vector2(-(Mathf.Sign(myRigidbody.velocity.x)), transform.localScale.y);
         }
     }
