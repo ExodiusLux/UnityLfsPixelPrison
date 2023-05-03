@@ -8,6 +8,7 @@ public class EnemyShooting : MonoBehaviour
     public Transform bulletPos;
     private GameObject player;
     private float timer;
+    public float fireRange;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -20,7 +21,7 @@ public class EnemyShooting : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
         //spawn if player is within range
-        if(distance < 10){
+        if(distance < fireRange){
             timer += Time.deltaTime;
             //shooting rate
             if(timer > 2){

@@ -6,22 +6,26 @@ public class Chaser : Enemy
 {
     private Rigidbody2D myRigidbody;
     public Transform target;
-    public SpriteRenderer sprite;
-    private Animator anim;
+    private SpriteRenderer sprite;
+    public Animator anim;
     //public Transform home;
     public float chaseRadius;
     public float attackRadius;
     Vector3 direction;
+    private bool facingRight;
 
     public enum MovementState{
         idle,
         walking,
-        running
+        running,
+        shooting,
+        punching
     }
 
     public MovementState state = MovementState.idle;
     public void Start()
     {
+        facingRight = true;
         target = GameObject.FindWithTag("Player").transform;
         myRigidbody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -45,16 +49,25 @@ public class Chaser : Enemy
     public void UpdateAnimationUpdate(){
         if(myRigidbody.velocity.x > 0f){ //run forward
             state = MovementState.running;
-            sprite.flipX = false;
-            //Debug.Log("x > 0");
+            //sprite.flipX = false;
+            if(!facingRight){flip();}
+            facingRight = true;
         }
         else if (myRigidbody.velocity.x < 0f){ //run backward
             state = MovementState.running;
-            sprite.flipX = true;
+            //sprite.flipX = true;
+            
+            if(facingRight){flip();}
+            facingRight = false;
         }
         else{ //idle
             state = MovementState.idle;
-            //Debug.Log("x = 0");
         }
+    }
+
+    private void flip(){
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
     }
 }
