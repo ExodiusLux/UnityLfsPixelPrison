@@ -6,19 +6,20 @@ public class Chaser : Enemy
 {
     private Rigidbody2D myRigidbody;
     public Transform target;
-    private SpriteRenderer sprite;
+    public SpriteRenderer sprite;
     private Animator anim;
     //public Transform home;
     public float chaseRadius;
     public float attackRadius;
+    Vector3 direction;
 
     public enum MovementState{
         idle,
-        walking
-        //,shooting
+        walking,
+        running
     }
 
-    MovementState state = MovementState.idle;
+    public MovementState state = MovementState.idle;
     public void Start()
     {
         target = GameObject.FindWithTag("Player").transform;
@@ -31,16 +32,29 @@ public class Chaser : Enemy
     public void Update()
     {
         CheckDistance();
+        UpdateAnimationUpdate();
         anim.SetInteger("state", (int)state);
     }
 
     public void CheckDistance(){
         if(Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius){
-            Vector3 newPos = transform.position;
-            newPos.x = Mathf.MoveTowards(transform.position.x, target.position.x, moveSpeed*Time.deltaTime);
-            transform.position = newPos;
-            state = MovementState.walking;
+            direction = target.transform.position - transform.position;
+            myRigidbody.velocity = new Vector2(direction.x, transform.position.y).normalized * moveSpeed;
         }
-        else state = MovementState.idle;
+    }
+    public void UpdateAnimationUpdate(){
+        if(myRigidbody.velocity.x > 0f){ //run forward
+            state = MovementState.running;
+            sprite.flipX = false;
+            //Debug.Log("x > 0");
+        }
+        else if (myRigidbody.velocity.x < 0f){ //run backward
+            state = MovementState.running;
+            sprite.flipX = true;
+        }
+        else{ //idle
+            state = MovementState.idle;
+            //Debug.Log("x = 0");
+        }
     }
 }
