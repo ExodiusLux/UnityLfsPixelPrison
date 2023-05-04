@@ -10,7 +10,10 @@ public class PlayerMovementScript : MonoBehaviour
     [SerializeField] private float jumpForce = 15f;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private LayerMask jumpableGround;
+    [SerializeField] private Transform wallCheck;
+    
 
+    private float wallRadius = 0.3f;
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     private Animator anim;
@@ -34,11 +37,9 @@ public class PlayerMovementScript : MonoBehaviour
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
-        if(Input.GetButtonDown("Jump") && IsGrounded()){
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        }
-
-       UpdateAnimationUpdate();
+    
+        Jump();
+        UpdateAnimationUpdate();
     }
 
     private void UpdateAnimationUpdate(){
@@ -72,5 +73,21 @@ public class PlayerMovementScript : MonoBehaviour
 
     private bool IsGrounded(){
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+    }
+    private bool IsTouchingWall(){
+        return Physics2D.OverlapCircle(wallCheck.position, wallRadius, jumpableGround);
+    }
+
+
+    private void Jump(){
+
+        if(IsGrounded()){
+             if(Input.GetButtonDown("Jump")){
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
+        }
+        else if(IsTouchingWall()){
+        
+        }
     }
 }
