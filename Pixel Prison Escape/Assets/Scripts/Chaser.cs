@@ -13,6 +13,8 @@ public class Chaser : Enemy
     public float attackRadius;
     Vector3 direction;
     private bool facingRight;
+    [SerializeField] private LayerMask jumpableGround;   
+    private BoxCollider2D coll; 
 
     public enum MovementState{
         idle,
@@ -30,6 +32,7 @@ public class Chaser : Enemy
         myRigidbody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();        
+        coll = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -41,7 +44,7 @@ public class Chaser : Enemy
     }
 
     public void CheckDistance(){
-        if(Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius){
+        if(Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius && IsGrounded()){
             direction = target.transform.position - transform.position;
             myRigidbody.velocity = new Vector2(direction.x, transform.position.y).normalized * moveSpeed;
         }
@@ -70,4 +73,8 @@ public class Chaser : Enemy
             theScale.x *= -1;
             transform.localScale = theScale;
     }
+
+    private bool IsGrounded(){
+        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+    }    
 }

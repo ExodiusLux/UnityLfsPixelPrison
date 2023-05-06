@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health;
+    public FloatValue maxHealth;
+    public float health;
     public string enemyName;
     public int attackDamage;
     public float moveSpeed = 1f;
 
-    void Start()
+    private void Awake()
     {
-        
+        health = maxHealth.initialValue;        
     }
 
-    void Update()
-    {
-        
-    }
 }
