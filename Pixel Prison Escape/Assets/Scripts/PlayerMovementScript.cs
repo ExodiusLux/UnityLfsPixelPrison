@@ -4,24 +4,32 @@ using UnityEngine;
 
 public class PlayerMovementScript : MonoBehaviour
 {
-  
-
-    private float dirX = 0f;
+    [Header("Movement Components")]
     [SerializeField] private float jumpForce = 15f;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private LayerMask jumpableGround;
-    [SerializeField] private Transform wallCheck;
-    
+                     bool isFacingRight = true;
+                     private float dirX = 0f;
 
-    private float wallRadius = 0.3f;
+    [Header("Wall Jump Components")]
+    [SerializeField] private Transform wallCheck;
+    [SerializeField] private float wallJumpTime;
+    [SerializeField] private float wallSlideSpeed;
+    [SerializeField] private float jumpTime;
+                     private float wallDistance = .2f;
+                     bool isWallSliding = false;
+                     RaycastHit2D WallCheckHit;
+                     private float wallPushForce = 5f;
+
+    [Header("Sprite Components")]
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     private Animator anim;
     private BoxCollider2D coll;
 
-    //idle = 0 , running = 1, falling = 2, jumping = 3
+    //(Sprite animations enum) idle = 0 , running = 1, falling = 2, jumping = 3
     private enum MovementState { idle, running, falling, jumping};
-    // Start is called before the first frame update
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -49,10 +57,12 @@ public class PlayerMovementScript : MonoBehaviour
        if(dirX > 0f){ //run forward
         state = MovementState.running;
         sprite.flipX = false;
+        isFacingRight = true;
        }
        else if (dirX < 0f){ //run backward
         state = MovementState.running;
         sprite.flipX = true;
+        isFacingRight = false;
        }
        else{ //idle
         state = MovementState.idle;
@@ -74,9 +84,6 @@ public class PlayerMovementScript : MonoBehaviour
     private bool IsGrounded(){
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
-    private bool IsTouchingWall(){
-        return Physics2D.OverlapCircle(wallCheck.position, wallRadius, jumpableGround);
-    }
 
 
     private void Jump(){
@@ -86,8 +93,30 @@ public class PlayerMovementScript : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
         }
-        else if(IsTouchingWall()){
-        
+        if(isFacingRight){
+            WallCheckHit = Physics2D.Raycast(transform.position, new Vector2(wallDistance, 0 ), wallDistance, jumpableGround);
+            Debug.DrawRay(transform.position, new Vector2(wallDistance, 0), Color.blue);
+        }
+        else{
+             WallCheckHit = Physics2D.Raycast(transform.position, new Vector2(-wallDistance, 0 ), wallDistance, jumpableGround);
+             Debug.DrawRay(transform.position, new Vector2(-wallDistance, 0), Color.blue);
+        }
+
+
+        if(WallCheckHit && !IsGrounded() && dirX != 0){
+            isWallSliding = true;
+            jumpTime = Time.time + wallJumpTime;
+        }
+        else if(jumpTime < Time.time){
+            isWallSliding = false;
+        }
+
+        if(isWallSliding){
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
+        }
+
+        if(isWallSliding && Input.GetButtonDown("Jump")){
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
 }
