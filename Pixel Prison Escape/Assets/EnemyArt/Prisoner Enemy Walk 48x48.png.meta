@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ff9fae2d0135f4d4396a15f8f2373eed
+guid: a6791a946776b4349a7f32d99c1f313b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 48
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character Idle 48x48_0
+      name: Prisoner Enemy Walk 48x48_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71b2c73b0c7cb0d4c9467b5b6824388b
-      internalID: -481059119
+      spriteID: 14846da72f1cd4049b3f248b81bf6825
+      internalID: -1449193574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character Idle 48x48_1
+      name: Prisoner Enemy Walk 48x48_1
       rect:
         serializedVersion: 2
         x: 48
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05dd55c239381b8498200aaeada3650d
-      internalID: 1317283340
+      spriteID: ad5ab8a77b67dde48af6b689b751cfe6
+      internalID: 279871822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character Idle 48x48_2
+      name: Prisoner Enemy Walk 48x48_2
       rect:
         serializedVersion: 2
         x: 96
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a6d6b2ff0683b74ca1565f36eaa928f
-      internalID: 979306989
+      spriteID: 8105f023d196fbe4db22bfc53cd6dd14
+      internalID: 1752931823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character Idle 48x48_3
+      name: Prisoner Enemy Walk 48x48_3
       rect:
         serializedVersion: 2
         x: 144
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a32d0dd8b8df26a40bec0c3976c97937
-      internalID: 1339416566
+      spriteID: 2e892f6d6914a5e428b716f633a21315
+      internalID: -78241707
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character Idle 48x48_4
+      name: Prisoner Enemy Walk 48x48_4
       rect:
         serializedVersion: 2
         x: 192
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d2aaa365f8180442a39625bb0228cb7
-      internalID: 878185654
+      spriteID: a6be40b0e30521c49a23a99a4146e395
+      internalID: 171001557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character Idle 48x48_5
+      name: Prisoner Enemy Walk 48x48_5
       rect:
         serializedVersion: 2
         x: 240
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 259b43856c4171048b1113b220e8a867
-      internalID: 31951734
+      spriteID: 60c145c176bed0e42bc3b3f8ee3c9f8c
+      internalID: 1552294549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character Idle 48x48_6
+      name: Prisoner Enemy Walk 48x48_6
       rect:
         serializedVersion: 2
         x: 288
@@ -245,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4fbdde036b5dc848a5e43c5de468b82
-      internalID: 848176818
+      spriteID: 020904369ce163a48aab2f63429e2367
+      internalID: 360082941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character Idle 48x48_7
+      name: Prisoner Enemy Walk 48x48_7
       rect:
         serializedVersion: 2
         x: 336
@@ -266,50 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7ea1be3553998f44b3c40b956d01c62
-      internalID: 558587451
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character Idle 48x48_8
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b4605a15d65ae848828b8b07ddebf8e
-      internalID: 1863752578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character Idle 48x48_9
-      rect:
-        serializedVersion: 2
-        x: 432
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df19ab361d31c10419b9c55cdecfb868
-      internalID: -661129656
+      spriteID: e696295c28b34514082fb0a100ce552f
+      internalID: -1469196876
       vertices: []
       indices: 
       edges: []
@@ -325,16 +283,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Character Idle 48x48_8: 1863752578
-      Character Idle 48x48_6: 848176818
-      Character Idle 48x48_1: 1317283340
-      Character Idle 48x48_0: -481059119
-      Character Idle 48x48_3: 1339416566
-      Character Idle 48x48_5: 31951734
-      Character Idle 48x48_7: 558587451
-      Character Idle 48x48_9: -661129656
-      Character Idle 48x48_2: 979306989
-      Character Idle 48x48_4: 878185654
+      Prisoner Enemy Walk 48x48_0: -1449193574
+      Prisoner Enemy Walk 48x48_6: 360082941
+      Prisoner Enemy Walk 48x48_1: 279871822
+      Prisoner Enemy Walk 48x48_4: 171001557
+      Prisoner Enemy Walk 48x48_7: -1469196876
+      Prisoner Enemy Walk 48x48_2: 1752931823
+      Prisoner Enemy Walk 48x48_3: -78241707
+      Prisoner Enemy Walk 48x48_5: 1552294549
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -29,7 +29,7 @@ public class Prisoner : Chaser
         if (message.Equals("AttackAnimationEnded"))
         {
             state = MovementState.idle;
-             Debug.Log("done punch");
+            //Debug.Log("done punch");
             // Do other things based on an attack ending.
         }
     }

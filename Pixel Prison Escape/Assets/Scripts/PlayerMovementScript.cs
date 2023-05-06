@@ -11,7 +11,7 @@ public class PlayerMovementScript : MonoBehaviour
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private Transform wallCheck;
-    
+    [SerializeField] private int health = 10;
 
     private float wallRadius = 0.3f;
     private Rigidbody2D rb;
@@ -40,6 +40,10 @@ public class PlayerMovementScript : MonoBehaviour
     
         Jump();
         UpdateAnimationUpdate();
+
+        if(health <= 0){
+            //Destroy(gameObject);
+        }
     }
 
     private void UpdateAnimationUpdate(){
@@ -90,4 +94,5 @@ public class PlayerMovementScript : MonoBehaviour
         
         }
     }
+
 }
