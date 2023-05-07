@@ -27,8 +27,8 @@ public class PlayerMovementScript : MonoBehaviour
     private Animator anim;
     private BoxCollider2D coll;
 
-    //(Sprite animations enum) idle = 0 , running = 1, falling = 2, jumping = 3
-    private enum MovementState { idle, running, falling, jumping};
+    //(Sprite animations enum) idle = 0 , running = 1, falling = 2, jumping = 3, wallSliding = 4, attack = 5
+    private enum MovementState { idle, running, falling, jumping, wallSliding, attack};
 
     void Start()
     {
@@ -45,7 +45,7 @@ public class PlayerMovementScript : MonoBehaviour
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
-    
+
         Jump();
         UpdateAnimationUpdate();
     }
@@ -75,10 +75,14 @@ public class PlayerMovementScript : MonoBehaviour
         state = MovementState.falling;
         
        }
-       anim.SetInteger("state", (int)state);
-
+       else if(Input.GetMouseButtonDown(0)){
+        state = MovementState.attack;
+       }
+       if(isWallSliding){
+        state = MovementState.wallSliding;
+       }
        
-
+        anim.SetInteger("state", (int)state);
     }
 
     private bool IsGrounded(){
