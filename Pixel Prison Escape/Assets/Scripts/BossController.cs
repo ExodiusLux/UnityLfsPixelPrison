@@ -30,8 +30,18 @@ public class BossController : MonoBehaviour
             }
             if(pattern > 15){
                 state = AttackState.Rest;
-                pattern = 0;
             }
+            if(pattern > 20){
+                state = AttackState.AutoFire;
+            }
+            if(pattern > 30){
+                state = AttackState.Rest;
+            }
+            if(pattern > 40){ 
+                pattern = 0;
+                state = AttackState.Tripple;
+            }
+
         }
         else state = AttackState.Rest;
     }        
