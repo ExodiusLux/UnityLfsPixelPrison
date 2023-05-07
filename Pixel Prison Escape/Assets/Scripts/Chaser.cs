@@ -12,6 +12,7 @@ public class Chaser : Enemy
     //public Transform home;
     public float chaseRadius;
     public float attackRadius;
+    public float homeRadius;
     Vector3 direction;
     private bool facingRight;
     [SerializeField] private LayerMask jumpableGround;   
@@ -46,10 +47,11 @@ public class Chaser : Enemy
     }
 
     public void CheckDistance(){
-        if(Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius && IsGrounded()){
+        if(Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius && IsGrounded() && Mathf.Abs(homePosition.position.x - transform.position.x) < homeRadius){    
             walk = false;
             direction = target.transform.position - transform.position;
-            myRigidbody.velocity = new Vector2(direction.x, transform.position.y).normalized * moveSpeed;
+            //myRigidbody.velocity = new Vector2(direction.x, transform.position.y).normalized * moveSpeed;
+            myRigidbody.velocity = new Vector2(direction.x, 0).normalized * moveSpeed;
         }
         else goHome();
     }
@@ -99,7 +101,7 @@ public class Chaser : Enemy
         if(Mathf.Abs(homePosition.position.x - transform.position.x) > 1.5){
             walk = true;
             direction = homePosition.transform.position - transform.position;
-            myRigidbody.velocity = new Vector2(direction.x, transform.position.y).normalized * moveSpeed;
+            myRigidbody.velocity = new Vector2(direction.x, 0).normalized * moveSpeed;
         }
         else{
             myRigidbody.velocity = new Vector2(0,0);

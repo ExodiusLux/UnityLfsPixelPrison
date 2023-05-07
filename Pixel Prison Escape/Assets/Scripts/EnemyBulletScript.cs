@@ -34,7 +34,6 @@ public class EnemyBulletScript : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        //if(other.gameObject.CompareTag("Player")){
             //TODO remove player health
             Destroy(gameObject);
        // }

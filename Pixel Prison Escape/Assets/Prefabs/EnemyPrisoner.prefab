@@ -232,10 +232,13 @@ MonoBehaviour:
   enemyName: 
   attackDamage: 0
   moveSpeed: 5
+  walkSpeed: 1
   target: {fileID: 0}
+  homePosition: {fileID: 0}
   anim: {fileID: 0}
   chaseRadius: 10
   attackRadius: 2
+  homeRadius: 15
   jumpableGround:
     serializedVersion: 2
     m_Bits: 256
