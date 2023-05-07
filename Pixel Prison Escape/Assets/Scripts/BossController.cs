@@ -8,21 +8,31 @@ public class BossController : MonoBehaviour
     public AttackState state = AttackState.Rest;
     public bool startFight;
     private float pattern;
+    public float health;
 
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D other) {
-        startFight = true;
-        state = AttackState.Tripple;
+        if(health > 0){
+            startFight = true;
+            state = AttackState.Tripple;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        startFight = false;
+        state = AttackState.Rest;
     }
 
     void Update(){
-        pattern += Time.deltaTime;
-        if(pattern > 10){
-            state = AttackState.AutoFire;
+        if(health > 0){
+            pattern += Time.deltaTime;
+            if(pattern > 10){
+                state = AttackState.AutoFire;
+            }
+            if(pattern > 15){
+                state = AttackState.Rest;
+                pattern = 0;
+            }
         }
-        if(pattern > 15){
-            state = AttackState.Rest;
-            pattern = 0;
-        }
+        else state = AttackState.Rest;
     }        
 }
