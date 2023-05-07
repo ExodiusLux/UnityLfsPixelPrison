@@ -16,7 +16,7 @@ public class PlayerMovementScript : MonoBehaviour
     [SerializeField] private float wallJumpTime;
     [SerializeField] private float wallSlideSpeed;
     [SerializeField] private float jumpTime;
-                     private float wallDistance = .2f;
+                     private float wallDistance = .3f;
                      bool isWallSliding = false;
                      RaycastHit2D WallCheckHit;
                      private float wallPushForce = 5f;
