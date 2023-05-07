@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovementScript : MonoBehaviour
 {
+    [Header("CharacterAttributes")]
+    [SerializeField] private float playerHealth = 5f;
+
     [Header("Movement Components")]
     [SerializeField] private float jumpForce = 15f;
     [SerializeField] private float moveSpeed = 7f;
@@ -16,10 +19,9 @@ public class PlayerMovementScript : MonoBehaviour
     [SerializeField] private float wallJumpTime;
     [SerializeField] private float wallSlideSpeed;
     [SerializeField] private float jumpTime;
-                     private float wallDistance = .3f;
+                     private float wallDistance = .4f;
                      bool isWallSliding = false;
                      RaycastHit2D WallCheckHit;
-                     private float wallPushForce = 5f;
 
     [Header("Sprite Components")]
     private Rigidbody2D rb;
@@ -27,8 +29,8 @@ public class PlayerMovementScript : MonoBehaviour
     private Animator anim;
     private BoxCollider2D coll;
 
-    //(Sprite animations enum) idle = 0 , running = 1, falling = 2, jumping = 3, wallSliding = 4, attack = 5
-    private enum MovementState { idle, running, falling, jumping, wallSliding, attack};
+    //(Sprite animations enum) idle = 0 , running = 1, falling = 2, jumping = 3, wallSliding = 4
+    private enum MovementState { idle, running, falling, jumping, wallSliding};
 
     void Start()
     {
@@ -36,6 +38,7 @@ public class PlayerMovementScript : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         coll = GetComponent<BoxCollider2D>();
+        playerHealth = 5f; //resetting player health on restart/death/etc
     }
 
     // Update is called once per frame
@@ -44,7 +47,6 @@ public class PlayerMovementScript : MonoBehaviour
 
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
-
 
         Jump();
         UpdateAnimationUpdate();
@@ -75,9 +77,6 @@ public class PlayerMovementScript : MonoBehaviour
         state = MovementState.falling;
         
        }
-       else if(Input.GetMouseButtonDown(0)){
-        state = MovementState.attack;
-       }
        if(isWallSliding){
         state = MovementState.wallSliding;
        }
@@ -96,6 +95,7 @@ public class PlayerMovementScript : MonoBehaviour
              if(Input.GetButtonDown("Jump")){
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
+            isWallSliding = false;
         }
         if(isFacingRight){
             WallCheckHit = Physics2D.Raycast(transform.position, new Vector2(wallDistance, 0 ), wallDistance, jumpableGround);
@@ -121,6 +121,7 @@ public class PlayerMovementScript : MonoBehaviour
 
         if(isWallSliding && Input.GetButtonDown("Jump")){
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            isWallSliding = false;
         }
     }
 }
