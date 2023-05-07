@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public string enemyName;
     public int attackDamage;
     public float moveSpeed = 1f;
+    public float walkSpeed = 1f;
 
     private void Awake()
     {
