@@ -8,6 +8,7 @@ public class EnemyBulletScript : MonoBehaviour
     private Rigidbody2D myRb;
     public float bulletSpeed;
     private float timer;
+    public float timeOut = 2;
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class EnemyBulletScript : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer > 2){
+        if(timer > timeOut){
             Destroy(gameObject);
         }
     }
