@@ -16,7 +16,10 @@ public class Prisoner : Chaser
     }
     new void Update(){
         HasTarget = attackZone.detectedColliders.Count > 0;   
-        if(HasTarget && state!=MovementState.punching){state = MovementState.punching; anim.SetInteger("state", (int)state);}
+        if(HasTarget && state!=MovementState.punching){
+            state = MovementState.punching; anim.SetInteger("state", (int)state);
+            GetComponent<PlaySound>().Play(1);
+        }
         else if(state!=MovementState.punching){
             CheckDistance();
             UpdateAnimationUpdate();
