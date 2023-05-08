@@ -61,6 +61,7 @@ public class Chaser : Enemy
             //sprite.flipX = false;
             if(!facingRight){flip();}
             facingRight = true;
+            GetComponent<PlaySound>().Play(0);
         }
         else if (myRigidbody.velocity.x < 0f && !walk){ //run backward
             state = MovementState.running;
@@ -68,12 +69,14 @@ public class Chaser : Enemy
             
             if(facingRight){flip();}
             facingRight = false;
+            GetComponent<PlaySound>().Play(0);
         }
         else if(myRigidbody.velocity.x > 0f && walk){ //run forward
             state = MovementState.running;
             //sprite.flipX = false;
             if(!facingRight){flip();}
             facingRight = true;
+            GetComponent<PlaySound>().Play(0);
         }
         else if (myRigidbody.velocity.x < 0f && walk){ //run backward
             state = MovementState.running;
@@ -81,6 +84,7 @@ public class Chaser : Enemy
             
             if(facingRight){flip();}
             facingRight = false;
+            GetComponent<PlaySound>().Play(0);
         }
         else{ //idle
             state = MovementState.idle;
@@ -102,6 +106,7 @@ public class Chaser : Enemy
             walk = true;
             direction = homePosition.transform.position - transform.position;
             myRigidbody.velocity = new Vector2(direction.x, 0).normalized * moveSpeed;
+            GetComponent<PlaySound>().Play(0);
         }
         else{
             myRigidbody.velocity = new Vector2(0,0);

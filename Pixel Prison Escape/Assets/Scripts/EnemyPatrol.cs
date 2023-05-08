@@ -40,16 +40,21 @@ public class EnemyPatrol : Enemy
         //player in attack range
         HasTarget = attackZone.detectedColliders.Count > 0;
 
-        if(HasTarget && state!=MovementState.punching){state = MovementState.punching;}
+        if(HasTarget && state!=MovementState.punching){
+            state = MovementState.punching;
+            GetComponent<PlaySound>().Play(0);
+        }
         else if(isFacingRight()&&state!=MovementState.punching){
             //walk right
             myRigidbody.velocity = new Vector2(moveSpeed, 0f);
             state = MovementState.walking;
+            GetComponent<PlaySound>().Play(1);
         }
         else if (!isFacingRight()&&state!=MovementState.punching){
             //walk left
             myRigidbody.velocity = new Vector2(-moveSpeed, 0f);
             state = MovementState.walking;
+            GetComponent<PlaySound>().Play(1);
         }
 
         anim.SetInteger("state", (int)state);
