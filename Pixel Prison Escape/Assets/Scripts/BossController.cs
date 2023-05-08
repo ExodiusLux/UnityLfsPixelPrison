@@ -21,7 +21,12 @@ public class BossController : MonoBehaviour
         startFight = false;
         state = AttackState.Rest;
     }
-
+    public void TakeDamage(float damage){
+        health -= damage;
+        if(health <= 0){
+            Destroy(gameObject);
+        }
+    }
     void Update(){
         if(health > 0){
             pattern += Time.deltaTime;
