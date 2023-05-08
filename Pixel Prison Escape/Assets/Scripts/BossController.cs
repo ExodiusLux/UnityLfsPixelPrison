@@ -48,6 +48,6 @@ public class BossController : MonoBehaviour
             }
 
         }
-        else state = AttackState.Rest;
+        else {state = AttackState.Rest; Destroy(gameObject);}  
     }        
 }
