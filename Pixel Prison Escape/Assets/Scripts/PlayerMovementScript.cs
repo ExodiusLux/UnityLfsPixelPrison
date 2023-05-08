@@ -48,7 +48,10 @@ public class PlayerMovementScript : MonoBehaviour
 
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
-
+		if (dirX != 0f)
+        {
+            GetComponent<PlaySound>().Play(1);
+        }
         Jump();
         UpdateAnimationUpdate();
     }
@@ -61,7 +64,8 @@ public class PlayerMovementScript : MonoBehaviour
         state = MovementState.running;
         sprite.flipX = false;
         isFacingRight = true;
-       }
+        GetComponent<PlaySound>().Play(1);
+        }
        else if (dirX < 0f){ //run backward
         state = MovementState.running;
         sprite.flipX = true;
@@ -95,6 +99,7 @@ public class PlayerMovementScript : MonoBehaviour
         if(IsGrounded()){
              if(Input.GetButtonDown("Jump")){
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                GetComponent<PlaySound>().Play(0);
             }
             isWallSliding = false;
         }
