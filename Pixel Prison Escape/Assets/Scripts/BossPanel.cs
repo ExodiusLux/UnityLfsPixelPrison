@@ -25,17 +25,19 @@ public class BossPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetInteger("state", (int)state);
-    }
-    
-  
-    public void TakeDamage(float damage){
-        health -= damage;
-         if(health <= 0){
+        if(health <= 0){
             boss.health -= 1;
             Destroy(gameObject);
         }
+        anim.SetInteger("state", (int)state);
     }
+    
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Player" && state != PanelState.Blink){   
+            health--;
+            state = PanelState.Blink;
+        }
+    }    
     public void AlertObservers(string message)
     {
         if (message.Equals("DamageDone"))
