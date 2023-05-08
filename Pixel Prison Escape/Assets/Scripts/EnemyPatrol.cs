@@ -75,7 +75,12 @@ public class EnemyPatrol : Enemy
     private bool isFacingRight(){
         return transform.localScale.x > Mathf.Epsilon;
     }
-
+    public void TakingDamage(float damage){
+        health -= damage;
+        if(health <= 0){
+            Destroy(gameObject);
+        }
+    }
     //detects the end of enemy punching animation
     public void AlertObservers(string message)
     {

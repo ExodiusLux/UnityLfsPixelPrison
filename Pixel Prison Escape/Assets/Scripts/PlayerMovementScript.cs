@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerMovementScript : MonoBehaviour
 {
     [Header("CharacterAttributes")]
     [SerializeField] private float playerHealth = 5f;
+    [SerializeField] private float maxPlayerHealth = 5f;
 
     [Header("Movement Components")]
     [SerializeField] private float jumpForce = 15f;
@@ -38,7 +39,7 @@ public class PlayerMovementScript : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         coll = GetComponent<BoxCollider2D>();
-        playerHealth = 5f; //resetting player health on restart/death/etc
+        playerHealth = maxPlayerHealth; //resetting player health on restart/death/etc
     }
 
     // Update is called once per frame
@@ -122,6 +123,12 @@ public class PlayerMovementScript : MonoBehaviour
         if(isWallSliding && Input.GetButtonDown("Jump")){
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isWallSliding = false;
+        }
+    }
+    public void TakeDamage(float damage){
+        playerHealth -= damage;
+        if(playerHealth <= 0){
+            SceneManager.LoadScene("Level1");
         }
     }
 }
