@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
+    public GameObject exitDoor;
+    public Transform exitPosition;
     public enum AttackState {Rest, AutoFire, Line, Tripple};
     public AttackState state = AttackState.Rest;
     public bool startFight;
@@ -21,7 +23,12 @@ public class BossController : MonoBehaviour
         startFight = false;
         state = AttackState.Rest;
     }
-
+    public void TakeDamage(float damage){
+        health -= damage;
+        if(health <= 0){
+            Destroy(gameObject);
+        }
+    }
     void Update(){
         if(health > 0){
             pattern += Time.deltaTime;
@@ -43,6 +50,9 @@ public class BossController : MonoBehaviour
             }
 
         }
-        else state = AttackState.Rest;
+        else {
+            state = AttackState.Rest;
+            GameObject ex = Instantiate(exitDoor, exitPosition.position, Quaternion.identity) as GameObject;
+            Destroy(gameObject);}  
     }        
 }

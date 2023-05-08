@@ -38,7 +38,6 @@ public class BossPanel : MonoBehaviour
             state = PanelState.Blink;
         }
     }    
-
     public void AlertObservers(string message)
     {
         if (message.Equals("DamageDone"))
