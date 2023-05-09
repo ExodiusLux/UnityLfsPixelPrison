@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class PlayerMovementScript : MonoBehaviour
 {
+    [Header("HealthBar")]
+    [SerializeField] public Image healthBar;
+
     [Header("CharacterAttributes")]
     [SerializeField] private float playerHealth = 5f;
     [SerializeField] private float maxPlayerHealth = 5f;
@@ -146,6 +150,7 @@ public class PlayerMovementScript : MonoBehaviour
     }
     public void TakeDamage(float damage){
         playerHealth -= damage;
+        healthBar.fillAmount = playerHealth / maxPlayerHealth;
         if(playerHealth <= 0){
             SceneManager.LoadScene("Level1");
         }
@@ -153,6 +158,7 @@ public class PlayerMovementScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "bullet"){
             playerHealth -= 1;
+            healthBar.fillAmount = playerHealth / maxPlayerHealth;
             if(playerHealth <= 0){
                 SceneManager.LoadScene("Level1");
             }
