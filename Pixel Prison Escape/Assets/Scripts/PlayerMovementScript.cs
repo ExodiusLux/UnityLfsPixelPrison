@@ -29,12 +29,14 @@ public class PlayerMovementScript : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
     private BoxCollider2D coll;
+    private bool hasDied;
 
     //(Sprite animations enum) idle = 0 , running = 1, falling = 2, jumping = 3, wallSliding = 4
     private enum MovementState { idle, running, falling, jumping, wallSliding};
 
     void Start()
     {
+        hasDied = false;
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
@@ -52,10 +54,22 @@ public class PlayerMovementScript : MonoBehaviour
         {
             GetComponent<PlaySound>().Play(1);
         }
+        if(gameObject.transform.position.y < -7)
+        {
+            hasDied = true;
+        }
+        if (hasDied == true)
+        {
+            StartCoroutine("Die");
+        }
         Jump();
         UpdateAnimationUpdate();
     }
-
+    IEnumerator Die()
+    {
+        SceneManager.LoadScene ("SampleScene");
+        yield return null;
+    }
     private void UpdateAnimationUpdate(){
 
        MovementState state;
