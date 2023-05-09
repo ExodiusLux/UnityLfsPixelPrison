@@ -54,22 +54,22 @@ public class PlayerMovementScript : MonoBehaviour
         {
             GetComponent<PlaySound>().Play(1);
         }
-        if(gameObject.transform.position.y < -7)
+        /**if(gameObject.transform.position.y < -7)
         {
             hasDied = true;
         }
         if (hasDied == true)
         {
             StartCoroutine("Die");
-        }
+        }**/
         Jump();
         UpdateAnimationUpdate();
     }
-    IEnumerator Die()
+    /**IEnumerator Die()
     {
         SceneManager.LoadScene ("Level1");
         yield return null;
-    }
+    }**/
     private void UpdateAnimationUpdate(){
 
        MovementState state;
