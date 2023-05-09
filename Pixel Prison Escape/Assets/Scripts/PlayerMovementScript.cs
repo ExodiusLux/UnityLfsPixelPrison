@@ -67,7 +67,7 @@ public class PlayerMovementScript : MonoBehaviour
     }
     IEnumerator Die()
     {
-        SceneManager.LoadScene ("SampleScene");
+        SceneManager.LoadScene ("Level1");
         yield return null;
     }
     private void UpdateAnimationUpdate(){
@@ -148,6 +148,14 @@ public class PlayerMovementScript : MonoBehaviour
         playerHealth -= damage;
         if(playerHealth <= 0){
             SceneManager.LoadScene("Level1");
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "bullet"){
+            playerHealth -= 1;
+            if(playerHealth <= 0){
+                SceneManager.LoadScene("Level1");
+            }
         }
     }
 }
