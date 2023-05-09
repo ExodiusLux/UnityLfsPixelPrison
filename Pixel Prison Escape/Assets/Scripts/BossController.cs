@@ -14,14 +14,21 @@ public class BossController : MonoBehaviour
 
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Player"){
+        Debug.Log("enter");
         if(health > 0){
             startFight = true;
             state = AttackState.Tripple;
         }
+        }
     }
     private void OnTriggerExit2D(Collider2D other) {
+        if(other.gameObject.tag == "Player"){
+
         startFight = false;
+        Debug.Log("exit");
         state = AttackState.Rest;
+        }
     }
     public void TakeDamage(float damage){
         health -= damage;

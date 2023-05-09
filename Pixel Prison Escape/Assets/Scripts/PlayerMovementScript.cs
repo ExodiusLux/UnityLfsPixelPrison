@@ -54,7 +54,7 @@ public class PlayerMovementScript : MonoBehaviour
         {
             GetComponent<PlaySound>().Play(1);
         }
-        if(gameObject.transform.position.y < -7)
+        if(gameObject.transform.position.y < -20)
         {
             hasDied = true;
         }
