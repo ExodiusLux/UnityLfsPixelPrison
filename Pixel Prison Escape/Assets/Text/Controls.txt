@@ -1,0 +1,7 @@
+E = next pg
+Q = prev pg
+<-/A = left
+->/D = right
+W/Spacebar = Jump/Walljump
+LeftClick Mouse = Attack
+Tab = Close Control Screen
