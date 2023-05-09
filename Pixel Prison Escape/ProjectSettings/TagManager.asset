@@ -8,6 +8,8 @@ TagManager:
   - Wall
   - Enemy
   - Boss
+  - PlayerHitbox
+  - bullet
   layers:
   - Default
   - TransparentFX

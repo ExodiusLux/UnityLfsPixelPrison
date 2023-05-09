@@ -33,7 +33,7 @@ public class BossPanel : MonoBehaviour
     }
     
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Player" && state != PanelState.Blink){   
+        if(other.gameObject.tag == "PlayerHitbox" && state != PanelState.Blink){   
             health--;
             state = PanelState.Blink;
         }

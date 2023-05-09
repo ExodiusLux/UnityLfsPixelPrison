@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossBullet Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 670999504788600687, guid: 325f888e498a78b428b53e409c7292ba, type: 3}
+      propertyPath: m_TagString
+      value: bullet
+      objectReference: {fileID: 0}
     - target: {fileID: 1494424608161089550, guid: 325f888e498a78b428b53e409c7292ba, type: 3}
       propertyPath: m_RootOrder
       value: 0

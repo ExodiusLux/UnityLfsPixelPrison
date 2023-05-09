@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: 34a30c6a7c1222e4f837410fc1620b25
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: Player Sword Stab 96x48 1_Clip
+    second: {fileID: 7400000, guid: eca9576bf536db046b94c605d5201139, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -93,7 +98,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638190112870255373
+  platformSettingsDirtyTick: 638191750125643644
   textureAssetName: 
   singleSpriteImportData:
   - name: 
